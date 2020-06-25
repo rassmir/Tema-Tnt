@@ -34,14 +34,16 @@ $(() => {
     currentNamespace = data.next.namespace;
 
     if(data.next.namespace == "inicio" || data.next.namespace == "blog" || data.next.namespace == "eventos" || data.next.namespace == "contacto") {
-      headerWrapper.addClass("text-white");
+      //headerWrapper.addClass("text-white");
+      console.log("A");
     } else {
-      headerWrapper.removeClass("text-white");
+      //headerWrapper.removeClass("text-white");
+
     }
   });
 
   //Page transitions
-  barba.init({
+  /* barba.init({
     views: [
       {
         namespace: 'inicio',
@@ -80,7 +82,7 @@ $(() => {
           if(!firstVisit) {
             expertiseFunctions(0, 500);
           } else {
-            firstVisit = false;
+            firstVisit = true;
           }
         }
       },
@@ -323,7 +325,7 @@ $(() => {
       }
     ]
   });
-
+ */
 
 
 
@@ -334,8 +336,7 @@ $(() => {
       currentHour = new Date().getHours();
 
   if (currentHour < 8 || currentHour > 19) {
-    $("body").attr("data-theme", "light");
-    $(".global__header-night-mode input[type='checkbox']").prop('checked', true);
+    $("body").attr("data-theme", "light");    $(".global__header-night-mode input[type='checkbox']").prop('checked', true);
   }
 
 
@@ -351,27 +352,27 @@ $(() => {
 
 
 
-  //Scroll animation
-  $("a.scroll-target").click((e) => {
-    var target = $(e.currentTarget).attr("href");
+  /*  //Scroll animation
+   $("a.scroll-target").click((e) => {
+     var target = $(e.currentTarget).attr("href");
 
-    e.preventDefault();
+     e.preventDefault();
 
-    $('html,body').animate({
-      scrollTop: $(target).offset().top
-    }, 2000, "easeInOutQuart");
-  });
+     $('html,body').animate({
+       scrollTop: $(target).offset().top
+     }, 2000, "easeInOutQuart");
+   }); */
 
 
 
   //No-barba link
-  $(".no-barba").click((e) => {
-    var url = $(e.currentTarget).attr("href");
+  /*  $(".no-barba").click((e) => {
+     var url = $(e.currentTarget).attr("href");
 
-    window.location.href = url;
+     //window.location.href = url;
 
-    return false;
-  });
+     return false;
+   }); */
 
 
 
@@ -808,13 +809,13 @@ function footer(reverse) {
 //Remove accents
 function simplifyText(str) {
   var map = {
-    'a' : 'Ã¡|Ã |Ã£|Ã¢|Ã€|Ã|Ãƒ|Ã‚',
-    'e' : 'Ã©|Ã¨|Ãª|Ã‰|Ãˆ|ÃŠ',
-    'i' : 'Ã­|Ã¬|Ã®|Ã|ÃŒ|ÃŽ',
-    'o' : 'Ã³|Ã²|Ã´|Ãµ|Ã“|Ã’|Ã”|Ã•',
-    'u' : 'Ãº|Ã¹|Ã»|Ã¼|Ãš|Ã™|Ã›|Ãœ',
-    'c' : 'Ã§|Ã‡',
-    'n' : 'Ã±|Ã‘'
+    'a' : 'á|à|ã|â|À|Á|Ã|Â',
+    'e' : 'é|è|ê|É|È|Ê',
+    'i' : 'í|ì|î|Í|Ì|Î',
+    'o' : 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
+    'u' : 'ú|ù|û|ü|Ú|Ù|Û|Ü',
+    'c' : 'ç|Ç',
+    'n' : 'ñ|Ñ'
   };
 
   str = str.toLowerCase();
@@ -830,14 +831,14 @@ function simplifyText(str) {
 
 
 // Search url parameter
-$.urlParam = function (name) {
+/* $.urlParam = function (name) {
   var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-      .exec(window.location.href);
+                    .exec(window.location.href);
   if (results == null) {
-    return 0;
+       return 0;
   }
   return results[1] || 0;
-}
+} */
 // Global variables
 var foresightBlinks;
 
@@ -1470,7 +1471,7 @@ function knowledgeGlobal(reverse) {
     bookType = $(el).data("book-type");
 
     // Update book details
-    $(".knowledge__header-title, .knowledge__item-detail-title").text(bookTitle);
+    /* $(".knowledge__header-title, .knowledge__item-detail-title").text(bookTitle);
     $(".knowledge__item-download-name").val(bookTitle);
     $(".knowledge__header-type").text(bookType);
     $(".knowledge__item-download-type").val(bookType);
@@ -1479,7 +1480,7 @@ function knowledgeGlobal(reverse) {
     $(".knowledge__item-download-link").attr("href", bookUrl);
     $(".knowledge__item-detail-option.replay").attr("href", bookReplay);
     $(".knowledge__item-detail-option.download").attr("href", bookUrl);
-    $(".knowledge__item-detail-spotify").attr("href", spotifyUrl);
+    $(".knowledge__item-detail-spotify").attr("href", spotifyUrl); */
 
     if (bookExternal == "si") {
       $(".knowledge__item-download").hide();
@@ -1519,30 +1520,30 @@ function knowledgeGlobal(reverse) {
 
 
 
-  $(".knowledge__item-detail-option.download").click((e) => {
+  /* $(".knowledge__item-detail-option.download").click((e) => {
     var url = $(e.currentTarget).attr("href");
 
     window.location.href = url;
 
     return false;
-  });
+  }); */
 
 
 
 
-  document.addEventListener( 'wpcf7mailsent', function( event ) {
-    if (downloadFormID == event.detail.contactFormId) {
-      if (bookType != "Webinars") {
-        window.location.href = bookUrl;
-      } else {
-        $(".knowledge__item-detail-options").removeClass("hidden");
-      }
+  /*  document.addEventListener( 'wpcf7mailsent', function( event ) {
+     if (downloadFormID == event.detail.contactFormId) {
+       if (bookType != "Webinars") {
+         window.location.href = bookUrl;
+       } else {
+         $(".knowledge__item-detail-options").removeClass("hidden");
+       }
 
-      setTimeout(() => {
-        $(".wpcf7-response-output").fadeToggle(1000);
-      }, 5000);
-    }
-  }, false );
+       setTimeout(() => {
+         $(".wpcf7-response-output").fadeToggle(1000);
+       }, 5000);
+     }
+   }, false ); */
 }
 
 
@@ -2484,11 +2485,11 @@ $(".global__popup-services-wrapper").click(function(e){
 });
 
 
-$(window).load(function() {
+/* $(window).load(function() {
   //Fix for images url
   $(".global__popup-services-wrapper form img").each(function() {
     var url = $(this).attr("src"),
-        url = window.location.href + "wp-content/themes/4srealestate/" + url;
+        url = window.location.href + "source/img" + url;
 
     $(this).attr("src", url);
   });
@@ -2497,7 +2498,7 @@ $(window).load(function() {
   $(".global__popup-services-overlay select").selectric({
     maxHeight: 140
   });
-});
+}); */
 
 
 $(".global__popup-services-form-option label").click(function() {
